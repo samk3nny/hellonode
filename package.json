@@ -1,4 +1,4 @@
-{
+﻿{
   "name": "hellonode",
   "version": "0.0.0",
   "description": "very first app",
@@ -28,6 +28,6 @@
 }
 {
   "engines": {
-    "node": "0.10.24"
+    "node": "0.10.*"
   }
 }

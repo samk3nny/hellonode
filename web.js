@@ -6,7 +6,8 @@ var app = express();
 app.use(logfmt.requestLogger());
 
 app.get('/', function(req, res) {
-  res.send('Hello Node.JS 2!');
+	res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.send('Hello Node.JS <b>2!</b>');
 });
 
 var port = process.env.PORT || 5000;

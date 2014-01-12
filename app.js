@@ -2,18 +2,24 @@ var express = require('express');
 var app = express();
 app.listen(8000);
 
+// Required to load the css stylesheet file defined in locals
+app.use(express.static(__dirname + '/public'));
+
+// New for Express 3.0
+app.set("view engine", "ejs");
+
 var tweets = [];
 
 app.get('/', function(req, res) {
-	  var title = 'Twotter',
-	    header = 'Welcome to Twotter';
+	  var title = 'Chirpie',
+	    header = 'Welcome to Chirpie';
 	    
 	  res.render('index', {
 	  	locals: {
 	  		'title': title,
 	  		'header': header,
 	  		'tweets': tweets,
-	  		stylesheets: ['/public/style.css']
+	  		stylesheets: ['style.css']
 	  	}
 	  })
 })
@@ -27,7 +33,7 @@ app.post('/send', express.bodyParser(),
   	}
   	else {
   		// no tweet?
-  		res.send({status:"nok", message:"No tweet received"})
+  		res.send('{status:"nok", message:"No tweet received"}')
   	}
   })
   	
